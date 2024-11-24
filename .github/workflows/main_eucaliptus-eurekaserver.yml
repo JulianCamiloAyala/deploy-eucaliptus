@@ -24,12 +24,12 @@ jobs:
 
       - name: Build with Maven
         run: mvn clean install
-        working-directory: ./eureka-server
+
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
           name: java-app
-          path: './eureka-server/target/*.jar'
+          path: '${{ github.workspace }}/target/*.jar'
 
   deploy:
     runs-on: ubuntu-latest
@@ -49,9 +49,9 @@ jobs:
       - name: Login to Azure
         uses: azure/login@v2
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_F29DEFA901604FAFA5356DC4B1AFDD07 }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_5BE4BB99871748A78B3B3C73C8D24B1C }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_DA41CF92C7CF4E14A7A6235F49C89C13 }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_19E4C61D3C5A4409988B0BE45F61FD8C }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_00436904B823446EB2B041016841187C }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_F3C871D5E9214C79B235B99A2090D43B }}
 
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
