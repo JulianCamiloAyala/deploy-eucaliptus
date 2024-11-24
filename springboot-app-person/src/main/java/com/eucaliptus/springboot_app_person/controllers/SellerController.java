@@ -97,7 +97,7 @@ public class SellerController {
                     documentTypeService.findByNameType(documentType.getNameType()).get();
             Seller seller = SellerMapper.sellerDTOToSeller(sellerDTO, documentType);
             if (!userService.createUser(sellerDTO, apiService.getTokenByRequest(request)))
-                return new ResponseEntity<>(new Message("Intente de nuevo mas tarde"), HttpStatus.INTERNAL_SERVER_ERROR);
+                return new ResponseEntity<>(new Message("Fallo al conectar con auth"), HttpStatus.INTERNAL_SERVER_ERROR);
             return new ResponseEntity<>(SellerMapper.sellerToSellerDTO(sellerService.saveSeller(seller)), HttpStatus.OK);
         } catch (Exception e){
             e.printStackTrace();
