@@ -101,9 +101,10 @@ public class SecurityConfig {
     SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.cors(cors -> cors.configurationSource(request -> {
                     CorsConfiguration configuration = new CorsConfiguration();
-                    configuration.setAllowedOrigins(List.of("*",
-                            ServicesUri.FRONT_URL,
-                            "https://kind-water-0356c4910.5.azurestaticapps.net/"));
+                    configuration.setAllowedOrigins(List.of(
+                            "https://kind-water-0356c4910.5.azurestaticapps.net/",
+                            "https://eucaliptus-eureka-b2ghfcbbcbguh9dp.centralus-01.azurewebsites.net",
+                            "https://eucaliptus-person-awfphcfue8hyfubh.centralus-01.azurewebsites.net"));
                     configuration.setAllowedMethods(List.of("HEAD", "GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"));
                     configuration.setAllowCredentials(true);
                     configuration.addExposedHeader("Message");
